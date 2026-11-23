@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio Brenda Fernandes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna única estreita, cabeçalho com "spec" de teste ao lado do nome, seções em duas colunas (rótulo + conteúdo). */
+:root {
+  --bg: #f3f6f7;
+  --surface: #ffffff;
+  --fg: #12202b;
+  --muted: #55656f;
+  --line: #d6dfe3;
+  --accent: #0a746f;
+  --accent-soft: #dff1ef;
+  --pass: #1a7f4b;
+  --code-bg: #0f1c25;
+  --code-fg: #d7e4ea;
+  --code-dim: #7d939f;
+  --code-pass: #5fd49a;
+  --code-key: #8fd3cc;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d171e; --surface: #142330; --fg: #e5eef2; --muted: #9bb0ba; --line: #24394a;
+    --accent: #5fd0c6; --accent-soft: #14343a; --pass: #5fd49a;
+    --code-bg: #091218; --code-fg: #d7e4ea; --code-dim: #6f8794; --code-pass: #5fd49a; --code-key: #8fd3cc;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d171e; --surface: #142330; --fg: #e5eef2; --muted: #9bb0ba; --line: #24394a;
+  --accent: #5fd0c6; --accent-soft: #14343a; --pass: #5fd49a;
+  --code-bg: #091218; --code-fg: #d7e4ea; --code-dim: #6f8794; --code-pass: #5fd49a; --code-key: #8fd3cc;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 48px 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 72px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+/* Topo */
+.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--pass); flex: none; }
+h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 700; letter-spacing: -0.02em; margin-top: 18px; }
+.role { font-family: var(--font-display); font-size: clamp(1.15rem, 2.6vw, 1.5rem); font-weight: 500; color: var(--accent); margin-top: 14px; }
+.lead { max-width: 52ch; margin-top: 20px; color: var(--muted); font-size: 1.05rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 2px solid var(--fg); color: var(--fg); background: transparent; font-family: var(--font-body); font-size: 15px; cursor: pointer; }
+.btn.primary { background: var(--fg); color: var(--bg); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary:hover { background: var(--accent); color: var(--bg); }
+
+.spec { background: var(--code-bg); color: var(--code-fg); border-radius: 12px; padding: 20px 22px; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.75; overflow-x: auto; }
+.spec .bar { display: flex; justify-content: space-between; color: var(--code-dim); font-size: 12px; margin-bottom: 12px; gap: 12px; }
+.spec pre { margin: 0; font: inherit; white-space: pre; }
+.k { color: var(--code-key); }
+.d { color: var(--code-dim); }
+.ok { color: var(--code-pass); }
+.spec .sum { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12); color: var(--code-pass); }
+
+/* Seções */
+section { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; border-top: 1px solid var(--line); padding-top: 28px; }
+h2 { font-size: 1.05rem; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.body { min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.body > p { max-width: 62ch; font-size: 1.05rem; }
+
+.skills { display: grid; gap: 18px; }
+.skill-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 12px 20px; align-items: baseline; }
+.skill-row dt { font-weight: 600; }
+.skill-row dd { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--font-mono); font-size: 13px; padding: 3px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--fg); border: 1px solid var(--line); }
+
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.project h3 { font-size: 1.35rem; }
+.project p { color: var(--muted); }
+.project ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.project .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.project a.more { font-weight: 600; }
+
+.job h3 { font-size: 1.35rem; }
+.job .meta { color: var(--muted); font-family: var(--font-mono); font-size: 13px; margin-top: 6px; }
+.job ul { margin: 16px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; max-width: 64ch; }
+
+.edu { display: grid; gap: 22px; }
+.edu-item h3 { font-size: 1.15rem; }
+.edu-item .meta { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+.cert { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.cert .badge { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--pass); }
+.cert .topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.others { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.contact-line { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mail { font-family: var(--font-mono); font-size: 1rem; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); user-select: all; overflow-wrap: anywhere; }
+.note { color: var(--muted); font-size: 0.95rem; min-height: 1.4em; }
+footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  section { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .projects { grid-template-columns: minmax(0, 1fr); }
+  .skill-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .wrap { gap: 56px; }
+  body { padding-block: 32px 28px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Aberta a vagas de QA · Uberaba, MG</p>
+      <h1>Brenda Fernandes</h1>
+      <p class="role">Analista de QA · Testes manuais e automação</p>
+      <p class="lead">Venho do suporte de TI, onde testo sistemas todos os dias e acompanho métricas de bugs. Hoje automatizo testes de API com Cypress e testes E2E com Playwright, em JavaScript.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/brendaluizaf4" target="_blank" rel="noopener">Ver GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/brenda-fernandes-a4aa98204" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="spec" role="img" aria-label="Trecho de código de teste: Brenda Fernandes testa o que o usuário vive, automatiza com Cypress e Playwright e reporta bugs que dá para reproduzir. 3 testes passando.">
+      <div class="bar"><span>brenda.cy.js</span><span>spec</span></div>
+<pre aria-hidden="true"><span class="k">describe</span>(<span class="ok">'Brenda Fernandes'</span>, () => {
+  <span class="ok">✓</span> <span class="d">it(</span>testa o que o usuário vive<span class="d">)</span>
+  <span class="ok">✓</span> <span class="d">it(</span>automatiza com Cypress e Playwright<span class="d">)</span>
+  <span class="ok">✓</span> <span class="d">it(</span>reporta bug que dá para reproduzir<span class="d">)</span>
+})</pre>
+      <div class="sum" aria-hidden="true">3 passing</div>
+    </div>
+  </header>
+
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <div class="body">
+      <p>Sou tecnóloga em Análise e Desenvolvimento de Sistemas e estou migrando do suporte de TI para Quality Assurance. No suporte aprendi a ouvir quem usa o sistema, a descrever um problema de um jeito que outra pessoa consiga reproduzir e a priorizar o que pesa para o cliente.</p>
+      <p>Na parte técnica, escrevo testes automatizados em JavaScript, versiono tudo no GitHub e trabalho com Scrum e Kanban. Gosto de ser direta, aprender rápido e assumir o que entrego.</p>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <dl class="body skills" style="margin:0">
+      <div class="skill-row"><dt>Automação</dt><dd><span class="chip">Cypress</span><span class="chip">Playwright</span><span class="chip">JavaScript</span><span class="chip">Git e GitHub</span><span class="chip">CI/CD</span><span class="chip">K6</span><span class="chip">Maestro</span></dd></div>
+      <div class="skill-row"><dt>Testes</dt><dd><span class="chip">Testes manuais</span><span class="chip">Testes de API</span><span class="chip">E2E</span><span class="chip">Casos de teste</span><span class="chip">Validação de requisitos</span><span class="chip">Ciclo de vida do bug</span></dd></div>
+      <div class="skill-row"><dt>Métricas</dt><dd><span class="chip">Volume de bugs</span><span class="chip">Taxa de reabertura</span><span class="chip">Severidade</span><span class="chip">Cobertura de testes</span></dd></div>
+      <div class="skill-row"><dt>Ágil e gestão</dt><dd><span class="chip">Scrum</span><span class="chip">Kanban</span><span class="chip">Jira</span><span class="chip">Trello</span></dd></div>
+      <div class="skill-row"><dt>Infraestrutura</dt><dd><span class="chip">Windows e Server</span><span class="chip">Redes (TCP/IP, DNS, DHCP)</span><span class="chip">Active Directory</span><span class="chip">Gestão de incidentes e SLA</span></dd></div>
+    </dl>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="body">
+      <div class="projects">
+        <article class="project">
+          <h3>cypress-api-suites</h3>
+          <p>Suíte de testes automatizados de API com Cypress para a Restful Booker API.</p>
+          <ul>
+            <li>Cobre autenticação e endpoints da API</li>
+            <li>Código em JavaScript, versionado no GitHub</li>
+          </ul>
+          <div class="tags"><span class="chip">Cypress</span><span class="chip">API</span><span class="chip">JavaScript</span></div>
+          <a class="more" href="https://github.com/brendaluizaf4/cypress-api-suites" target="_blank" rel="noopener">Ver repositório</a>
+        </article>
+        <article class="project">
+          <h3>qazando-auto-playwright</h3>
+          <p>Testes E2E do Qazando Shop (automationpratice.com.br), site de prática para QA.</p>
+          <ul>
+            <li>Specs de login e cadastro</li>
+            <li>Evoluindo para os cenários da página da loja</li>
+          </ul>
+          <div class="tags"><span class="chip">Playwright</span><span class="chip">E2E</span><span class="chip">JavaScript</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <h2>Experiência</h2>
+    <div class="body">
+      <div class="job">
+        <h3>Técnico de TI · Digicolor Tecnologia</h3>
+        <p class="meta">Help Desk e Service Desk, níveis 1 e 2 · Uberaba, MG · desde out/2024</p>
+        <ul>
+          <li>Planejo e executo testes manuais de sistemas e equipamentos com base nos requisitos e nas expectativas de cada cliente.</li>
+          <li>Mantenho quadros de métricas de qualidade: volume de bugs, taxa de reabertura, severidade de incidentes e cobertura de testes.</li>
+          <li>Abro, acompanho e resolvo incidentes e requisições por chamados, dentro dos SLAs.</li>
+          <li>Gerencio permissões de usuários no Active Directory e no Microsoft 365.</li>
+          <li>Diagnostico problemas de rede (cabeamento, Wi-Fi, VPN) e configuro periféricos em rede.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="formacao">
+    <h2>Formação</h2>
+    <div class="body edu">
+      <div class="cert">
+        <span class="badge">Certificado · concluído em 19/08/2026</span>
+        <h3>QA PRO · Qazando, Turma 1</h3>
+        <p>Formação avançada em Qualidade de Software, com 48 horas ao longo de 8 semanas (20 ao vivo e 28 gravadas).</p>
+        <div class="topics"><span class="chip">Cypress web e API</span><span class="chip">Playwright com IA e MCP</span><span class="chip">Maestro mobile</span><span class="chip">Git e GitHub</span><span class="chip">CI/CD</span><span class="chip">Performance com K6</span></div>
+      </div>
+      <div class="edu-item">
+        <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+        <p class="meta">UNOPAR · fev/2023 a jul/2025</p>
+      </div>
+      <div class="edu-item">
+        <h3>Ensino técnico em Desenvolvimento de Sistemas</h3>
+        <p class="meta">Senai · ago/2022 a dez/2023</p>
+      </div>
+      <div class="edu-item">
+        <h3>Outros cursos</h3>
+        <div class="others" style="margin-top:10px"><span class="chip">Microsoft Windows Server 2019</span><span class="chip">Git e GitHub</span><span class="chip">Conceitos de testes e automação</span><span class="chip">Desenvolvimento ágil</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <div class="body">
+      <p>Estou buscando uma vaga de Analista de QA. Se quiser conversar ou ver meus projetos, escreva para mim.</p>
+      <div class="contact-line">
+        <span class="mail" id="mail">brendaluizaf4@gmail.com</span>
+        <button class="btn" id="copy" type="button">Copiar e-mail</button>
+        <a class="btn" href="https://www.linkedin.com/in/brenda-fernandes-a4aa98204" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/brendaluizaf4" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="note" id="note" role="status"></p>
+    </div>
+  </section>
+
+  <footer>Brenda Luiza Fernandes · Uberaba, Minas Gerais</footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var note = document.getElementById('note');
+  var mail = document.getElementById('mail');
+  function selectMail() {
+    try {
+      var r = document.createRange(); r.selectNodeContents(mail);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    } catch (e) {}
+  }
+  btn.addEventListener('click', function () {
+    var text = mail.textContent.trim();
+    var p;
+    try { p = navigator.clipboard.writeText(text); } catch (e) { p = Promise.reject(e); }
+    p.then(function () { note.textContent = 'E-mail copiado.'; })
+     .catch(function () { selectMail(); note.textContent = 'Selecionei o e-mail, é só copiar.'; });
+  });
+})();
+</script>
+
+</body>
+</html>
